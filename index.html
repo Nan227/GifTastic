@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GifTastic</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Added link to the jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <style>
+      body{
+        margin: 20px;
+        height: 100%; 
+        background-image: url("wallpaper.png");
+        background-repeat:no-repeat;
+        background-position:right bottom;
+      }
+    </style>
+  
+</head>
+<body>
+
+  <div class="jumbotron">
+
+    <h1 class="text-center"> Gift-searching for your favorite Cartoon!</h1>
+
+  </div>
+  
+  <div class="card bg-light mb-3 my-10" style="max-width: 18rem;">
+  <div class="card-header"><h3>Search</h3></div>
+  <div class="card-body">
+      What is your favorite cartoon?
+      <br>
+      <input type="text" id="cartoon-input">
+      <br><br>
+      <input id="add-cartoon" type="submit">
+      <br>
+      <br>
+    <p class="card-text"> Click on your favorite cartoon button</p>
+    
+  </div>
+  </div>
+  <div id ="buttons-view"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      // Initial array of cartoon
+      var cartoons = ["Mikey mouse", "Donale duck", "Snow white", "The Lion King"];
+
+// function button adding
+      function renderButtons() {
+      $("#buttons-view").empty();
+
+      for (var i=0; i< cartoons.length; i ++) {
+        var a = $("<button>");
+          a.addClass("cartoon");
+          a.attr("data-name", cartoons[i]);
+          a.text(cartoons[i]);
+          $("#buttons-view").append(a);
+      }
+    } 
+     
+// function on click button
+$("#add-cartoon").on("click", function(event){
+  event.preventDefault();
+  var cartoon = $("#cartoon-input").val().trim();
+
+  cartoons.push(cartoon);
+  rederButtons();
+});
+
+$(document).on("click", ".cartoon-btn", displaycartoonInfo);
+
+      // Calling the renderButtons function to display the intial buttons
+      renderButtons();
+
+  function displayCartoonInfo() {
+
+      var cartoon = $(this).attr("data-name");
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        cartoon + "&api_key=dc6zaTOxFJmzC&limit=10";
+    //Creating an AJAX call for specific cartoon button being clicked
+    $.ajax({
+      url: queryURL,
+      method:"GET"
+    }).then(function(response){
+      console.log(response);
+
+      // Creating a div to hole the cartoon
+      var cartoonDiv = $("<div class='cartoon'>");
+
+      // Storing the rating data
+      var rating = response.Rated;
+
+      // display the rating in an element
+      var pOne = $("<p>").text("Rating: " + rating);
+
+        cartoonDiv.append(pOne);
+    });
+  }
+
+    
+ 
+
+  </script>
+
+</body>
+</html>
