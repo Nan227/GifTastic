@@ -1,3 +1,4 @@
 # GifTastic
 
-This project user can add a cortoon name on the button. After user click at the button name. This app will display gif files from a Giphy.com 
+This project user can add a cortoon name on the button. 
+If user clicks on the cartoon button name. This app will display some Gif files from a Giphy.com 
