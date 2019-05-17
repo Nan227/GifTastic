@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <link rel="stylesheet" href="assets/style.css">
 
-
 </head>
 
 <body>
@@ -39,47 +38,15 @@
       </div>
 
     </div>
-    <div class="card-body" id="cartoon-view">
+    <div class="card-body mb-3" id="cartoon-view">
     
       <div id="cartoons-view"></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    var cartoons = ["Mickey mouse ", "Donald Duck ", "Ariel ", "The Lion King "];
-    function renderButtons() {
-      $("#cartoons-view").empty();
-
-      for (var i = 0; i < cartoons.length; i++) {
-        var a = $("<button>");
-          // Adding a class
-          a.addClass("cartoon");
-          // Adding a data-attribute with a value of the cartoon at index i
-          a.attr("data-name", cartoons[i]);
-          // Providing the button's text 
-          a.text(cartoons[i]);
-          // Adding the button to the HTML
-          $("#cartoons-view").append(a);
-        }
-      }
-
-      $("#add-cartoon").on("click", function(event) {
-        event.preventDefault();
-
-var cartoon = $("#cartoon-input").val().trim();
-
-cartoons.push(cartoon);
-$("#cartoon-input").empty();
-
-renderButtons();
-});
-renderButtons();
-    </script>
-  </div>
-
-
+     
+    </div>
   </body>
     <link rel="stylesheet2" href="assets/app.js">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.js"></script>
 
